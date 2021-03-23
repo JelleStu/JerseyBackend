@@ -1,0 +1,4 @@
+ticketsystem/service/logic/TeamViewManagerTest.java
+ ticketsystem.service.logic.TeamViewManagerTest
+ticketsystem/service/logic/MatchManagerTest.java
+ ticketsystem.service.logic.MatchManagerTest

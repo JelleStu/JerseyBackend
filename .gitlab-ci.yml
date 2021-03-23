@@ -1,0 +1,39 @@
+stages:
+  - build
+  - test
+#  - sonarqube
+  - docker
+
+build:
+  stage:
+    build
+  script:
+    - ./gradlew build
+  after_script:
+    - echo "End build"
+
+test:
+  stage:
+    test
+  script:
+    - ./gradlew test
+  after_script:
+    - echo "End testing!"
+
+#sonarqube:
+#  stage:
+#    sonarqube
+#  script:
+#    - ./gradlew sonarqube
+#  after_script:
+#    - echo "End sonarqube check it at your localhost!"
+
+docker:
+  stage:
+    docker
+  script:
+   - ./gradlew shadowJar
+   - docker rmi -f dockerbackendimage
+   - docker build -t dockerbackendimage .
+   - docker run -itd -p 4545:4545 dockerbackendimage
+
